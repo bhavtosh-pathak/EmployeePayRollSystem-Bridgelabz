@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>EMPLOYEES DASHBOARD</h1>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Emp Name</th>
+            <th>Basic Salary</th>
+            <th>Tax (12%)</th>
+            <th>Net Salary</th>
+        </tr>
+
+        <% employees.forEach(emp => { 
+            let tax = emp.basicSalary * 0.12;
+            let netsalary = emp.basicSalary - tax;
+        %>
+        <tr>
+            <td><%= emp.id %></td>
+            <td><%= emp.name %></td>
+            <td><%= emp.basicSalary %></td>
+            <td><%= tax %></td>
+            <td><%= netsalary %></td>
+        </tr>
+        <% }) %>
+    </table>
+
+</body>
+</html>

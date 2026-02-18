@@ -1,6 +1,22 @@
 [
     {
         "name":"bhavtosh",
-        "branch":"cse"
+        "id":1,
+        "basicSalary":70000
+    },
+    {
+        "name":"piyus",
+        "id":2,
+        "basicSalary":40000
+    },
+    {
+        "name":"abhay",
+        "id":3,
+        "basicSalary":90000
+    },
+     {
+        "name":"akash",
+        "id":4,
+        "basicSalary":90000
     }
 ]
