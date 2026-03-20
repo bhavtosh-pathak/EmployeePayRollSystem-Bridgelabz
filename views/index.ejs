@@ -2,35 +2,78 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Dashboard</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <h1>EMPLOYEES DASHBOARD</h1>
 
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Emp Name</th>
-            <th>Basic Salary</th>
-            <th>Tax (12%)</th>
-            <th>Net Salary</th>
-        </tr>
+<div class="header">
+    <h2>Dashboard</h2>
+    <a href="/add"><button class="add-btn">ADD Employee</button></a>
+</div>
 
-        <% employees.forEach(emp => { 
-            let tax = emp.basicSalary * 0.12;
-            let netsalary = emp.basicSalary - tax;
-        %>
-        <tr>
-            <td><%= emp.id %></td>
-            <td><%= emp.name %></td>
-            <td><%= emp.basicSalary %></td>
-            <td><%= tax %></td>
-            <td><%= netsalary %></td>
-        </tr>
-        <% }) %>
-    </table>
+<!-- DASHBOARD BOXES -->
+<div class="cards">
+    <div class="card">
+        <h4>Total Employees</h4>
+        <h2><%= employees.length %></h2>
+    </div>
+
+    <div class="card">
+        <h4>Departments</h4>
+        <h2>8</h2>
+    </div>
+
+    <div class="card">
+        <h4>New Joinees</h4>
+        <h2>12</h2>
+    </div>
+
+    <div class="card">
+        <h4>On Leave</h4>
+        <h2>6</h2>
+    </div>
+</div>
+
+<h2>Employee List</h2>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Emp Name</th>
+        <th>Basic Salary</th>
+        <th>Tax (12%)</th>
+        <th>Net Salary</th>
+        
+        <th>Action</th>
+    </tr>
+
+    <% employees.forEach(emp => { 
+        let tax = emp.salary * 0.12;
+        let netsalary = emp.salary - tax;
+    %>
+    <tr>
+        <td><%= emp.id %></td>
+        <td><%= emp.name %></td>
+        <td><%= emp.salary %></td>
+        <td><%= tax %></td>
+        <td><%= netsalary %></td>
+       
+        
+        <td>
+           
+            <a href="/employee/edit/<%= emp.id %>">
+                <button class="edit-btn">Edit</button>
+            </a>
+            <form action="/employee/delete/<%= emp.id %>" method="POST" style="display:inline;">
+                <button class="delete-btn" onclick="return confirm('Are you sure?')">
+                    Delete
+                </button>
+            </form>
+        </td>
+    </tr>
+    <% }) %>
+</table>
 
 </body>
 </html>
